@@ -1,5 +1,6 @@
 import typescript from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
+import astroPlugin from "eslint-plugin-astro";
 
 export default [
   {
@@ -20,4 +21,5 @@ export default [
       "no-console": ["warn", { allow: ["warn", "error"] }],
     },
   },
+  ...astroPlugin.configs.recommended,
 ];
