@@ -1,0 +1,30 @@
+---
+interface Props {
+  id?: string;
+  className?: string;
+  bg?: 'light' | 'dark' | 'gradient';
+  padding?: 'none' | 'sm' | 'md' | 'lg';
+}
+
+type ComponentProps = AstroComponentProps<'section', Props>;
+
+const { id, className = '', bg = 'light', padding = 'lg' } = Astro.props;
+---
+
+<section
+  id={id}
+  class={{
+    [className]: !!className,
+    'bg-slate-50': bg === 'light',
+    'bg-slate-900 text-white': bg === 'dark',
+    'bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white': bg === 'gradient',
+    'py-12': padding === 'sm',
+    'py-16 md:py-24': padding === 'md',
+    'py-20 md:py-32': padding === 'lg',
+    'py-0': padding === 'none',
+  }}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <slot />
+  </div>
+</section>

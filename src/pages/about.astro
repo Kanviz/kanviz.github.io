@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { team } from '../data/team';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Icon from '../components/Icon.astro';
+
+const values = [
+  {
+    title: 'Excellence',
+    description: 'We strive for perfection in every visualization we create and every solution we deliver.',
+    icon: 'target',
+  },
+  {
+    title: 'Innovation',
+    description: 'We embrace new technologies and creative approaches to solve complex data challenges.',
+    icon: 'lightbulb',
+  },
+  {
+    title: 'Collaboration',
+    description: 'We work closely with our clients to ensure their data needs are fully understood and met.',
+    icon: 'chart-bar',
+  },
+  {
+    title: 'Integrity',
+    description: 'We maintain the highest standards of ethics and transparency in all our dealings.',
+    icon: 'trending-up',
+  },
+];
+
+const journey = [
+  { year: '2010', title: 'Founded', description: 'Kanviz was founded with a vision to make data accessible.' },
+  { year: '2012', title: 'First Major Client', description: 'We secured our first enterprise client, proving our capabilities.' },
+  { year: '2015', title: 'Team Expansion', description: 'Expanded our team to serve more clients across industries.' },
+  { year: '2018', title: 'Global Reach', description: 'Started working with international clients across 5 continents.' },
+  { year: '2021', title: 'Industry Leader', description: 'Recognized as a leading data visualization firm in our region.' },
+  { year: '2024', title: 'Innovation Award', description: 'Won the Data Innovation Award for our AI-powered analytics platform.' },
+];
+---
+
+<Layout title="About Us" description="Learn more about Kanviz, our mission, values, and the team behind our success.">
+  {/* Hero Section */}
+  <Section bg="gradient" padding="lg">
+    <div class="text-center max-w-3xl mx-auto space-y-6">
+      <h1 class="text-5xl md:text-6xl font-bold text-white">About Kanviz</h1>
+      <p class="text-xl text-slate-200 leading-relaxed">
+        We are a premier data visualization and business intelligence company helping organizations unlock the power of their data.
+      </p>
+    </div>
+  </Section>
+
+  {/* Our Story */}
+  <Section bg="light" padding="lg">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="relative order-2 lg:order-1">
+        <div class="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl opacity-20 blur-2xl"></div>
+        <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
+          <img src="https://images.unsplash.com/photo-1522071820478-7b2d83db54cb?auto=format&fit=crop&w=800&q=80" alt="Our office" class="w-full h-full object-cover" />
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2 space-y-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Our Story</h2>
+        <p class="text-lg text-slate-600 leading-relaxed">
+          Founded in 2010, Kanviz began as a small team of data enthusiasts with a big vision: to make data visualization accessible and impactful for businesses of all sizes. What started as a boutique consulting firm has grown into a leading provider of analytics solutions serving clients across industries.
+        </p>
+        <p class="text-lg text-slate-600 leading-relaxed">
+          Our journey has been defined by one constant: our commitment to helping organizations turn their data into actionable insights. We believe that great data visualization isn't just about pretty charts—it's about telling compelling stories that drive better decisions.
+        </p>
+        <p class="text-lg text-slate-600 leading-relaxed">
+          Today, we serve over 500 clients worldwide, from startups to Fortune 500 companies. Our team of data scientists, designers, and engineers work together to create solutions that not only meet but exceed expectations.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  {/* Our Values */}
+  <Section bg="dark" padding="lg">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-white">Our Core Values</h2>
+      <p class="text-lg text-slate-300">The principles that guide everything we do</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {values.map((value, index) => (
+        <div key={index} class="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 space-y-4 border border-slate-700 hover:border-blue-500 transition-colors duration-300">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white">
+            <Icon name={value.icon} size={24} />
+          </div>
+          <h3 class="text-xl font-bold text-white">{value.title}</h3>
+          <p class="text-slate-300 leading-relaxed text-sm">{value.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  {/* Our Journey */}
+  <Section bg="light" padding="lg">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Our Journey</h2>
+      <p class="text-lg text-slate-600">Key milestones in our growth story</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-12">
+      {journey.map((item, index) => (
+        <div key={index} class="relative flex flex-col md:flex-row gap-8">
+          <div class="md:w-32 flex-shrink-0 text-center md:text-right">
+            <span class="text-4xl font-bold text-blue-600">{item.year}</span>
+          </div>
+          <div class="flex-grow space-y-2">
+            <h3 class="text-xl font-bold text-slate-900">{item.title}</h3>
+            <p class="text-slate-600 leading-relaxed">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  {/* Team Section */}
+  <Section bg="white" padding="lg">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Meet Our Leadership</h2>
+      <p class="text-lg text-slate-600">The experienced team guiding our vision</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {team.slice(0, 3).map((member) => (
+        <Card key={member.id} class="text-center p-6 space-y-4 group">
+          <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-slate-200 to-slate-300 overflow-hidden border-4 border-white shadow-lg group-hover:border-blue-500 transition-colors duration-300">
+            <img src={`https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`} alt={member.name} class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-900">{member.name}</h3>
+            <p class="text-blue-600 font-medium">{member.role}</p>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  {/* CTA Section */}
+  <Section bg="gradient" padding="lg">
+    <div class="text-center max-w-3xl mx-auto space-y-8">
+      <h2 class="text-4xl md:text-5xl font-bold text-white">Join Our Journey</h2>
+      <p class="text-xl text-slate-200 leading-relaxed">
+        We're always looking for talented individuals who share our passion for data and innovation.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="px-8 py-4 bg-white text-blue-900 rounded-xl font-bold text-lg hover:bg-slate-50 transition-colors duration-300 shadow-lg shadow-blue-900/20">
+          View Open Positions
+        </a>
+      </div>
+    </div>
+  </Section>
+</Layout>

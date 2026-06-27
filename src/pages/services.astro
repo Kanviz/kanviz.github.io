@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { services } from '../data/services';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Icon from '../components/Icon.astro';
+
+const features = [
+  {
+    title: 'Custom Dashboards',
+    description: 'Tailored dashboards designed specifically for your business metrics and KPIs.',
+    icon: 'chart-bar',
+  },
+  {
+    title: 'Real-time Analytics',
+    description: 'Monitor your data in real-time with our live analytics solutions.',
+    icon: 'trending-up',
+  },
+  {
+    title: 'Data Integration',
+    description: 'Seamlessly connect all your data sources for a unified view.',
+    icon: 'target',
+  },
+  {
+    title: 'Predictive Modeling',
+    description: 'Forecast future trends and make data-driven predictions with confidence.',
+    icon: 'lightbulb',
+  },
+  {
+    title: 'Automated Reporting',
+    description: 'Schedule automated reports delivered directly to your inbox.',
+    icon: 'send',
+  },
+  {
+    title: 'Data Strategy',
+    description: 'Comprehensive consulting to develop your organization\'s data roadmap.',
+    icon: 'map-pin',
+  },
+];
+
+const pricing = [
+  {
+    name: 'Starter',
+    price: '$999',
+    description: 'Perfect for small businesses getting started with data visualization.',
+    features: ['1 Custom Dashboard', 'Real-time Data Updates', 'Email Support', 'Monthly Updates'],
+    popular: false,
+  },
+  {
+    name: 'Professional',
+    price: '$2,499',
+    description: 'Ideal for growing companies needing advanced analytics capabilities.',
+    features: ['3 Custom Dashboards', 'Predictive Analytics', 'Priority Support', 'Weekly Updates', 'Data Integration'],
+    popular: true,
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    description: 'Complete solution for large organizations with complex data needs.',
+    features: ['Unlimited Dashboards', 'Advanced AI/ML Models', '24/7 Dedicated Support', 'Custom Training', 'On-premise Deployment'],
+    popular: false,
+  },
+];
+---
+
+<Layout title="Services" description="Comprehensive data visualization and business intelligence services to help your organization thrive.">
+  {/* Hero Section */}
+  <Section bg="gradient" padding="lg">
+    <div class="text-center max-w-3xl mx-auto space-y-6">
+      <h1 class="text-5xl md:text-6xl font-bold text-white">Our Services</h1>
+      <p class="text-xl text-slate-200 leading-relaxed">
+        We provide end-to-end data visualization and business intelligence solutions tailored to your unique needs.
+      </p>
+    </div>
+  </Section>
+
+  {/* Core Services */}
+  <Section bg="light" padding="lg">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">What We Do</h2>
+      <p class="text-lg text-slate-600">Comprehensive solutions designed to transform your data into actionable insights</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <Card key={service.id} class="p-8 space-y-6 group hover:border-blue-200">
+          <div class={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+            <Icon name={service.icon} size={32} />
+          </div>
+          <h3 class="text-2xl font-bold text-slate-900">{service.title}</h3>
+          <p class="text-slate-600 leading-relaxed">{service.description}</p>
+          <a href="/contact" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
+            Learn more <Icon name="arrow-right" size={20} />
+          </a>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  {/* Features Grid */}
+  <Section bg="dark" padding="lg">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {features.map((feature, index) => (
+        <div key={index} class="flex items-start gap-4 p-6 bg-slate-800/30 rounded-2xl hover:bg-slate-800/50 transition-colors duration-300 border border-slate-700">
+          <div class="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center text-blue-400 flex-shrink-0">
+            <Icon name={feature.icon} size={24} />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">{feature.title}</h3>
+            <p class="text-slate-300 leading-relaxed">{feature.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  {/* Pricing Section */}
+  <Section bg="light" padding="lg">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Simple Pricing</h2>
+      <p class="text-lg text-slate-600">Transparent pricing plans designed for businesses of all sizes</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {pricing.map((plan, index) => (
+        <Card key={index} class={`p-8 space-y-6 relative ${plan.popular ? 'ring-2 ring-blue-600 shadow-xl' : ''}`}>
+          {plan.popular && (
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+              Most Popular
+            </div>
+          )}
+          <div class="text-center space-y-2">
+            <h3 class="text-xl font-bold text-slate-900">{plan.name}</h3>
+            <p class="text-slate-500 text-sm">{plan.description}</p>
+            <div class="py-6">
+              <span class="text-4xl font-bold text-slate-900">{plan.price}</span>
+              {plan.price !== 'Custom' && <span class="text-slate-500">/month</span>}
+            </div>
+          </div>
+          <ul class="space-y-3">
+            {plan.features.map((feature, idx) => (
+              <li key={idx} class="flex items-start gap-3 text-slate-600">
+                <Icon name="check" size={20} class="text-green-500 flex-shrink-0" />
+                <span class="text-sm">{feature}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="block w-full py-3 px-4 bg-slate-900 text-white rounded-xl font-semibold text-center hover:bg-blue-600 transition-colors duration-300">
+            Get Started
+          </a>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  {/* CTA Section */}
+  <Section bg="gradient" padding="lg">
+    <div class="text-center max-w-3xl mx-auto space-y-8">
+      <h2 class="text-4xl md:text-5xl font-bold text-white">Ready to Get Started?</h2>
+      <p class="text-xl text-slate-200 leading-relaxed">
+        Contact us today for a free consultation and discover how we can help you leverage your data.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="px-8 py-4 bg-white text-blue-900 rounded-xl font-bold text-lg hover:bg-slate-50 transition-colors duration-300 shadow-lg shadow-blue-900/20">
+          Schedule a Consultation
+        </a>
+      </div>
+    </div>
+  </Section>
+</Layout>
+
+<style>
+  .check {
+    display: inline-block;
+  }
+</style>
