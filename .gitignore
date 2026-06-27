@@ -166,3 +166,5 @@ pnpm-debug.log*
 .claude/local/
 .claude/memory/
 .claude/plans/
+
+drafts/
