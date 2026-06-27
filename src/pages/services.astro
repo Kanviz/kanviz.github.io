@@ -5,150 +5,139 @@ import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
 import Icon from '../components/Icon.astro';
 
-const features = [
+// Services organized by category
+const categories = [
   {
-    title: 'Custom Dashboards',
-    description: 'Tailored dashboards designed specifically for your business metrics and KPIs.',
-    icon: 'chart-bar',
+    title: 'Visual AI',
+    subtitle: 'From raw pixels to intelligent vision systems',
+    description: 'Annotate data, build vision models, and deploy deep learning systems that see and understand the world.',
+    services: services.filter(s => ['Data Annotation', 'Computer Vision', 'Deep Learning Models'].includes(s.title)),
   },
   {
-    title: 'Real-time Analytics',
-    description: 'Monitor your data in real-time with our live analytics solutions.',
-    icon: 'trending-up',
+    title: 'Language & Agentic AI',
+    subtitle: 'Intelligent language systems and autonomous agents',
+    description: 'Deploy LLMs, build knowledge-grounded RAG pipelines, and create autonomous AI agents that execute complex workflows.',
+    services: services.filter(s => ['LLM Deployment', 'RAG Systems', 'Autonomous Agents', 'Vision Language Models'].includes(s.title)),
   },
   {
-    title: 'Data Integration',
-    description: 'Seamlessly connect all your data sources for a unified view.',
-    icon: 'target',
-  },
-  {
-    title: 'Predictive Modeling',
-    description: 'Forecast future trends and make data-driven predictions with confidence.',
-    icon: 'lightbulb',
-  },
-  {
-    title: 'Automated Reporting',
-    description: 'Schedule automated reports delivered directly to your inbox.',
-    icon: 'send',
-  },
-  {
-    title: 'Data Strategy',
-    description: 'Comprehensive consulting to develop your organization\'s data roadmap.',
-    icon: 'map-pin',
+    title: 'AI Transformation Consulting',
+    subtitle: 'Strategy, governance, and team enablement',
+    description: 'Assess readiness, discover high-value use cases, establish governance, and build internal AI capabilities.',
+    services: services.filter(s => ['AI Readiness Assessment', 'Use-Case Discovery & ROI', 'AI Governance & Risk', 'Architecture Advisory', 'Team Enablement', 'MLOps & Improvement'].includes(s.title)),
   },
 ];
 
-const pricing = [
+const deploymentOptions = [
   {
-    name: 'Starter',
-    price: '$999',
-    description: 'Perfect for small businesses getting started with data visualization.',
-    features: ['1 Custom Dashboard', 'Real-time Data Updates', 'Email Support', 'Monthly Updates'],
-    popular: false,
+    title: 'Cloud Deployment',
+    description: 'Scalable, managed infrastructure with auto-scaling, load balancing, and pay-per-use economics.',
+    features: ['AWS (SageMaker, Bedrock, ECS)', 'Google Cloud (Vertex AI, GKE)', 'Azure (OpenAI Service, AKS)', 'Serverless inference endpoints'],
   },
   {
-    name: 'Professional',
-    price: '$2,499',
-    description: 'Ideal for growing companies needing advanced analytics capabilities.',
-    features: ['3 Custom Dashboards', 'Predictive Analytics', 'Priority Support', 'Weekly Updates', 'Data Integration'],
-    popular: true,
+    title: 'On-Premises Deployment',
+    description: 'Full data sovereignty with no external API calls. Ideal for regulated industries and latency-critical applications.',
+    features: ['Air-gapped secure environments', 'NVIDIA GPU cluster setup', 'Kubernetes / bare-metal orchestration', 'vLLM / TGI / Triton serving'],
+  },
+];
+
+const advantages = [
+  {
+    title: '3–5× Faster Time-to-Production',
+    description: 'Expert guidance eliminates costly trial-and-error cycles. Teams with experienced AI partners reach production 3–5× faster than those navigating the stack alone.',
   },
   {
-    name: 'Enterprise',
-    price: 'Custom',
-    description: 'Complete solution for large organizations with complex data needs.',
-    features: ['Unlimited Dashboards', 'Advanced AI/ML Models', '24/7 Dedicated Support', 'Custom Training', 'On-premise Deployment'],
-    popular: false,
+    title: '60% Reduction in Failed AI Projects',
+    description: 'Most AI projects fail not from lack of data, but from poor problem framing and architecture choices. A structured discovery phase prevents the most common failure modes.',
+  },
+  {
+    title: '40% Lower Infrastructure Cost',
+    description: 'Right-sizing models, choosing the correct serving stack, and avoiding over-engineered solutions typically cuts cloud and GPU spend by 30–40% versus self-directed builds.',
+  },
+  {
+    title: '100% Vendor-Neutral Advice',
+    description: 'We have no reseller agreements or platform incentives. Every recommendation is driven solely by what best fits your technical requirements and business constraints.',
   },
 ];
 ---
 
-<Layout title="Services" description="Comprehensive data visualization and business intelligence services to help your organization thrive.">
+<Layout title="Services" description="From raw pixels to autonomous AI agents — we engineer the full intelligence stack, deployable on cloud or on-premises infrastructure.">
   {/* Hero Section */}
   <Section bg="gradient" padding="lg">
     <div class="text-center max-w-3xl mx-auto space-y-6">
       <h1 class="text-5xl md:text-6xl font-bold text-white">Our Services</h1>
       <p class="text-xl text-slate-200 leading-relaxed">
-        We provide end-to-end data visualization and business intelligence solutions tailored to your unique needs.
+        From raw pixels to autonomous AI agents — we engineer the full intelligence stack, deployable on cloud or on-premises infrastructure.
       </p>
     </div>
   </Section>
 
-  {/* Core Services */}
-  <Section bg="light" padding="lg">
-    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">What We Do</h2>
-      <p class="text-lg text-slate-600">Comprehensive solutions designed to transform your data into actionable insights</p>
-    </div>
+  {/* Category Sections */}
+  {categories.map((category, categoryIndex) => (
+    <Section key={category.title} bg={categoryIndex % 2 === 0 ? 'light' : 'dark'} padding="lg">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">{category.title}</h2>
+        <p class="text-lg text-blue-600 dark:text-blue-400 font-medium">{category.subtitle}</p>
+        <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">{category.description}</p>
+      </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {services.map((service) => (
-        <Card key={service.id} class="p-8 space-y-6 group hover:border-blue-200">
-          <div class={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-            <Icon name={service.icon} size={32} />
-          </div>
-          <h3 class="text-2xl font-bold text-slate-900">{service.title}</h3>
-          <p class="text-slate-600 leading-relaxed">{service.description}</p>
-          <a href="/contact" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
-            Learn more <Icon name="arrow-right" size={20} />
-          </a>
-        </Card>
-      ))}
-    </div>
-  </Section>
-
-  {/* Features Grid */}
-  <Section bg="dark" padding="lg">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {features.map((feature, index) => (
-        <div key={index} class="flex items-start gap-4 p-6 bg-slate-800/30 rounded-2xl hover:bg-slate-800/50 transition-colors duration-300 border border-slate-700">
-          <div class="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center text-blue-400 flex-shrink-0">
-            <Icon name={feature.icon} size={24} />
-          </div>
-          <div>
-            <h3 class="text-xl font-bold text-white mb-2">{feature.title}</h3>
-            <p class="text-slate-300 leading-relaxed">{feature.description}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </Section>
-
-  {/* Pricing Section */}
-  <Section bg="light" padding="lg">
-    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Simple Pricing</h2>
-      <p class="text-lg text-slate-600">Transparent pricing plans designed for businesses of all sizes</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      {pricing.map((plan, index) => (
-        <Card key={index} class={`p-8 space-y-6 relative ${plan.popular ? 'ring-2 ring-blue-600 shadow-xl' : ''}`}>
-          {plan.popular && (
-            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-bold">
-              Most Popular
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {category.services.map((service) => (
+          <Card key={service.id} class="p-8 space-y-6 group hover:border-blue-200 dark:hover:border-blue-500 transition-colors duration-300">
+            <div class={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+              <Icon name={service.icon} size={32} />
             </div>
-          )}
-          <div class="text-center space-y-2">
-            <h3 class="text-xl font-bold text-slate-900">{plan.name}</h3>
-            <p class="text-slate-500 text-sm">{plan.description}</p>
-            <div class="py-6">
-              <span class="text-4xl font-bold text-slate-900">{plan.price}</span>
-              {plan.price !== 'Custom' && <span class="text-slate-500">/month</span>}
-            </div>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">{service.title}</h3>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">{service.description}</p>
+            <a href="/contact" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold hover:gap-3 transition-all">
+              Learn more <Icon name="arrow-right" size={20} />
+            </a>
+          </Card>
+        ))}
+      </div>
+    </Section>
+  ))}
+
+  {/* Deployment Options */}
+  <Section bg="gradient" padding="lg">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-white">Flexible Deployment</h2>
+      <p class="text-lg text-slate-200">Deploy anywhere — cloud or on-premises</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      {deploymentOptions.map((option, index) => (
+        <Card key={index} class="p-8 space-y-6 bg-white/10 backdrop-blur-sm border-white/20">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold text-white">{option.title}</h3>
+            <p class="text-slate-200 leading-relaxed">{option.description}</p>
           </div>
           <ul class="space-y-3">
-            {plan.features.map((feature, idx) => (
-              <li key={idx} class="flex items-start gap-3 text-slate-600">
-                <Icon name="check" size={20} class="text-green-500 flex-shrink-0" />
+            {option.features.map((feature, idx) => (
+              <li key={idx} class="flex items-start gap-3 text-slate-100">
+                <Icon name="check" size={20} class="text-green-400 flex-shrink-0" />
                 <span class="text-sm">{feature}</span>
               </li>
             ))}
           </ul>
-          <a href="/contact" class="block w-full py-3 px-4 bg-slate-900 text-white rounded-xl font-semibold text-center hover:bg-blue-600 transition-colors duration-300">
-            Get Started
-          </a>
         </Card>
+      ))}
+    </div>
+  </Section>
+
+  {/* The Advantage */}
+  <Section bg="light" padding="lg">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">The Advantage of Expert Guidance</h2>
+      <p class="text-lg text-slate-600">Why organizations choose Kanviz for their AI journey</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {advantages.map((advantage, index) => (
+        <div key={index} class="bg-white rounded-2xl p-6 space-y-4 border border-slate-100 shadow-sm hover:shadow-lg transition-shadow duration-300">
+          <div class="text-4xl font-bold text-blue-600">{advantage.title.split(' ')[0]}</div>
+          <h3 class="text-lg font-bold text-slate-900">{advantage.title}</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">{advantage.description}</p>
+        </div>
       ))}
     </div>
   </Section>
@@ -158,7 +147,7 @@ const pricing = [
     <div class="text-center max-w-3xl mx-auto space-y-8">
       <h2 class="text-4xl md:text-5xl font-bold text-white">Ready to Get Started?</h2>
       <p class="text-xl text-slate-200 leading-relaxed">
-        Contact us today for a free consultation and discover how we can help you leverage your data.
+        Contact us today for a free consultation and discover how we can help you leverage AI intelligence.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/contact" class="px-8 py-4 bg-white text-blue-900 rounded-xl font-bold text-lg hover:bg-slate-50 transition-colors duration-300 shadow-lg shadow-blue-900/20">

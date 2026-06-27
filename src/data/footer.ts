@@ -6,25 +6,7 @@ export const footerLinks: FooterLink[] = [
     items: [
       { label: 'About Us', href: '/about' },
       { label: 'Services', href: '/services' },
-      { label: 'Careers', href: '/careers' },
       { label: 'Contact', href: '/contact' },
-    ],
-  },
-  {
-    title: 'Resources',
-    items: [
-      { label: 'Blog', href: '/blog' },
-      { label: 'Case Studies', href: '/case-studies' },
-      { label: 'Documentation', href: '/docs' },
-      { label: 'Support', href: '/support' },
-    ],
-  },
-  {
-    title: 'Legal',
-    items: [
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Cookie Policy', href: '/cookies' },
     ],
   },
 ];

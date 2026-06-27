@@ -8,10 +8,10 @@ import Card from '../components/Card.astro';
 import Icon from '../components/Icon.astro';
 
 const stats = [
-  { label: 'Clients Served', value: '500+' },
-  { label: 'Projects Completed', value: '1,200+' },
-  { label: 'Team Members', value: '25+' },
-  { label: 'Years Experience', value: '15+' },
+  { label: 'Clients Served', value: '10+' },
+  { label: 'Projects Completed', value: '20+' },
+  { label: 'Team Members', value: '2' },
+  { label: 'Years of Experience', value: '15+' },
 ];
 ---
 
@@ -35,7 +35,7 @@ const stats = [
         </h1>
 
         <p class="text-lg md:text-xl text-slate-200 max-w-xl leading-relaxed">
-          We help companies turn complex data into actionable insights through innovative visualization solutions and strategic consulting that drive real growth.
+          We help companies turn complex data into intelligent action through AI-powered vision systems, language models, and autonomous agents.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4">
@@ -69,11 +69,11 @@ const stats = [
   <Section bg="light" padding="lg">
     <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
       <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Our Services</h2>
-      <p class="text-lg text-slate-600">Comprehensive solutions designed to help you leverage data effectively</p>
+      <p class="text-lg text-slate-600">End-to-end AI solutions from data to deployment</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {services.map((service) => (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.slice(0, 6).map((service) => (
         <Card key={service.id} class="p-6 space-y-4 group">
           <div class={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center text-white mb-2 group-hover:scale-110 transition-transform duration-300`}>
             <Icon name={service.icon} size={28} />
@@ -105,10 +105,10 @@ const stats = [
       <div class="order-1 lg:order-2 space-y-6">
         <h2 class="text-3xl md:text-4xl font-bold text-white">Who We Are</h2>
         <p class="text-lg text-slate-300 leading-relaxed">
-          Kanviz is a premier data visualization and business intelligence company dedicated to helping organizations unlock the full potential of their data. Founded in 2026, we're a new team of data enthusiasts building innovative analytics solutions.
+          Kanviz is a premier AI company helping organizations unlock the full potential of their data through intelligent vision systems, language models, and autonomous agents. Founded in 2026, we're a team of AI enthusiasts building the next generation of intelligent applications.
         </p>
         <p class="text-lg text-slate-300 leading-relaxed">
-          Our mission is simple: make data accessible, actionable, and impactful for businesses of all sizes. We believe that great data visualization isn't just about pretty charts—it's about telling compelling stories that drive better decisions.
+          Our mission is simple: teach machines to see, observe, and understand. We believe that great AI isn't just about algorithms—it's about building systems that reason, act, and deliver real business value.
         </p>
 
         <div class="grid grid-cols-2 gap-6 pt-4">

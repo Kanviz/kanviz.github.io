@@ -8,33 +8,24 @@ import Icon from '../components/Icon.astro';
 const values = [
   {
     title: 'Excellence',
-    description: 'We strive for perfection in every visualization we create and every solution we deliver.',
+    description: 'We strive for perfection in every AI system we build and every solution we deliver.',
     icon: 'target',
   },
   {
     title: 'Innovation',
-    description: 'We embrace new technologies and creative approaches to solve complex data challenges.',
+    description: 'We embrace new technologies and creative approaches to solve complex AI challenges.',
     icon: 'lightbulb',
   },
   {
     title: 'Collaboration',
-    description: 'We work closely with our clients to ensure their data needs are fully understood and met.',
-    icon: 'chart-bar',
+    description: 'We work closely with our clients to ensure their AI needs are fully understood and met.',
+    icon: 'users',
   },
   {
     title: 'Integrity',
-    description: 'We maintain the highest standards of ethics and transparency in all our dealings.',
-    icon: 'trending-up',
+    description: 'We maintain the highest standards of ethics and transparency in all our AI deployments.',
+    icon: 'shield',
   },
-];
-
-const journey = [
-  { year: '2010', title: 'Founded', description: 'Kanviz was founded with a vision to make data accessible.' },
-  { year: '2012', title: 'First Major Client', description: 'We secured our first enterprise client, proving our capabilities.' },
-  { year: '2015', title: 'Team Expansion', description: 'Expanded our team to serve more clients across industries.' },
-  { year: '2018', title: 'Global Reach', description: 'Started working with international clients across 5 continents.' },
-  { year: '2021', title: 'Industry Leader', description: 'Recognized as a leading data visualization firm in our region.' },
-  { year: '2024', title: 'Innovation Award', description: 'Won the Data Innovation Award for our AI-powered analytics platform.' },
 ];
 ---
 
@@ -44,7 +35,7 @@ const journey = [
     <div class="text-center max-w-3xl mx-auto space-y-6">
       <h1 class="text-5xl md:text-6xl font-bold text-white">About Kanviz</h1>
       <p class="text-xl text-slate-200 leading-relaxed">
-        We are a premier data visualization and business intelligence company helping organizations unlock the power of their data.
+        We are a premier AI company helping organizations unlock the power of their data through intelligent vision systems, language models, and autonomous agents.
       </p>
     </div>
   </Section>
@@ -57,7 +48,7 @@ const journey = [
         <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
           <div class="w-full h-64 md:h-96 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
             <svg class="w-32 h-32 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10V5a2 2 0 012-2h8a2 2 0 012 2v10M9 9h1m-1 4h1m4-4h1m-1 4h1m-1 1H9m2 0h1m-1 4h1m4-4h1m-1 4h1m-1 1H9m2 0h1m-1 4h1m4-4h1m-1 4h1m-1 1H9m2 0h1m-1 4h1m4-4h1m-1 4h1M9 17h6" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
         </div>
@@ -66,13 +57,13 @@ const journey = [
       <div class="order-1 lg:order-2 space-y-6">
         <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Our Story</h2>
         <p class="text-lg text-slate-600 leading-relaxed">
-          Founded in 2026, Kanviz began as a small team of data enthusiasts with a big vision: to make data visualization accessible and impactful for businesses of all sizes. What started as a boutique consulting firm has grown into a leading provider of analytics solutions serving clients across industries.
+          Founded in 2026, Kanviz began as a small team of AI enthusiasts with a big vision: to teach machines to see, observe, and understand. What started as a boutique consulting firm has grown into a leading provider of AI solutions serving clients across industries.
         </p>
         <p class="text-lg text-slate-600 leading-relaxed">
-          Our journey has been defined by one constant: our commitment to helping organizations turn their data into actionable insights. We believe that great data visualization isn't just about pretty charts—it's about telling compelling stories that drive better decisions.
+          Our journey has been defined by one constant: our commitment to helping organizations turn their data into actionable intelligence. We believe that great AI isn't just about algorithms—it's about building systems that see, reason, and act with purpose.
         </p>
         <p class="text-lg text-slate-600 leading-relaxed">
-          Today, we serve over 500 clients worldwide, from startups to Fortune 500 companies. Our team of data scientists, designers, and engineers work together to create solutions that not only meet but exceed expectations.
+          Our team of AI researchers, engineers, and consultants work together to create solutions that not only meet but exceed expectations.
         </p>
       </div>
     </div>
@@ -93,28 +84,6 @@ const journey = [
           </div>
           <h3 class="text-xl font-bold text-white">{value.title}</h3>
           <p class="text-slate-300 leading-relaxed text-sm">{value.description}</p>
-        </div>
-      ))}
-    </div>
-  </Section>
-
-  {/* Our Journey */}
-  <Section bg="light" padding="lg">
-    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Our Journey</h2>
-      <p class="text-lg text-slate-600">Key milestones in our growth story</p>
-    </div>
-
-    <div class="max-w-3xl mx-auto space-y-12">
-      {journey.map((item, index) => (
-        <div key={index} class="relative flex flex-col md:flex-row gap-8">
-          <div class="md:w-32 flex-shrink-0 text-center md:text-right">
-            <span class="text-4xl font-bold text-blue-600">{item.year}</span>
-          </div>
-          <div class="flex-grow space-y-2">
-            <h3 class="text-xl font-bold text-slate-900">{item.title}</h3>
-            <p class="text-slate-600 leading-relaxed">{item.description}</p>
-          </div>
         </div>
       ))}
     </div>
@@ -158,7 +127,7 @@ const journey = [
     <div class="text-center max-w-3xl mx-auto space-y-8">
       <h2 class="text-4xl md:text-5xl font-bold text-white">Join Our Journey</h2>
       <p class="text-xl text-slate-200 leading-relaxed">
-        We're always looking for talented individuals who share our passion for data and innovation.
+        We're always looking for talented individuals who share our passion for AI and innovation.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/contact" class="px-8 py-4 bg-white text-blue-900 rounded-xl font-bold text-lg hover:bg-slate-50 transition-colors duration-300 shadow-lg shadow-blue-900/20">
@@ -168,3 +137,9 @@ const journey = [
     </div>
   </Section>
 </Layout>
+
+<style>
+  .check {
+    display: inline-block;
+  }
+</style>
