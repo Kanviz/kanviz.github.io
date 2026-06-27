@@ -161,3 +161,8 @@ pnpm-debug.log*
 
 # Prettier cache
 .prettiercache
+
+# Claude AI (project-specific)
+.claude/local/
+.claude/memory/
+.claude/plans/
