@@ -83,10 +83,8 @@ The site is automatically deployed to GitHub Pages when changes are pushed to th
 
 ## 👥 Team
 
-- [Sarah Johnson](#) - CEO & Founder
-- [Michael Chen](#) - CTO
-- [Emily Rodriguez](#) - Head of Design
-- [David Kim](#) - Senior Consultant
+- [Dima Kanevsky](https://www.linkedin.com/in/dmitry-dima-kanevsky-2a4a0438/) - CEO/CTO & Co-Founder (AI & Computer Vision Consultant)
+- [Liza Kanevsky](https://www.linkedin.com/in/liza-kanevsky-19478043/) - CFO/COO & Co-Founder (Regulatory Affairs Specialist)
 
 ## 📄 License
 

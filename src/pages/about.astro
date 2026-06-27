@@ -55,14 +55,18 @@ const journey = [
       <div class="relative order-2 lg:order-1">
         <div class="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl opacity-20 blur-2xl"></div>
         <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
-          <img src="https://images.unsplash.com/photo-1522071820478-7b2d83db54cb?auto=format&fit=crop&w=800&q=80" alt="Our office" class="w-full h-full object-cover" />
+          <div class="w-full h-64 md:h-96 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
+            <svg class="w-32 h-32 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10V5a2 2 0 012-2h8a2 2 0 012 2v10M9 9h1m-1 4h1m4-4h1m-1 4h1m-1 1H9m2 0h1m-1 4h1m4-4h1m-1 4h1m-1 1H9m2 0h1m-1 4h1m4-4h1m-1 4h1m-1 1H9m2 0h1m-1 4h1m4-4h1m-1 4h1M9 17h6" />
+            </svg>
+          </div>
         </div>
       </div>
 
       <div class="order-1 lg:order-2 space-y-6">
         <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Our Story</h2>
         <p class="text-lg text-slate-600 leading-relaxed">
-          Founded in 2010, Kanviz began as a small team of data enthusiasts with a big vision: to make data visualization accessible and impactful for businesses of all sizes. What started as a boutique consulting firm has grown into a leading provider of analytics solutions serving clients across industries.
+          Founded in 2026, Kanviz began as a small team of data enthusiasts with a big vision: to make data visualization accessible and impactful for businesses of all sizes. What started as a boutique consulting firm has grown into a leading provider of analytics solutions serving clients across industries.
         </p>
         <p class="text-lg text-slate-600 leading-relaxed">
           Our journey has been defined by one constant: our commitment to helping organizations turn their data into actionable insights. We believe that great data visualization isn't just about pretty charts—it's about telling compelling stories that drive better decisions.
@@ -123,15 +127,26 @@ const journey = [
       <p class="text-lg text-slate-600">The experienced team guiding our vision</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {team.slice(0, 3).map((member) => (
-        <Card key={member.id} class="text-center p-6 space-y-4 group">
-          <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-slate-200 to-slate-300 overflow-hidden border-4 border-white shadow-lg group-hover:border-blue-500 transition-colors duration-300">
-            <img src={`https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`} alt={member.name} class="w-full h-full object-cover" />
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {team.map((member) => (
+        <Card key={member.id} class="text-center p-8 space-y-6 group hover:shadow-xl transition-shadow duration-300">
+          <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:border-blue-500 transition-colors duration-300">
+            <img src={`/${member.name.toLowerCase().replace(' ', '-')}.jpeg`} alt={member.name} class="w-full h-full object-cover" />
           </div>
-          <div>
-            <h3 class="text-lg font-bold text-slate-900">{member.name}</h3>
-            <p class="text-blue-600 font-medium">{member.role}</p>
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900">{member.name}</h3>
+              <p class="text-blue-600 font-semibold text-lg">{member.role}</p>
+            </div>
+            <p class="text-slate-600 leading-relaxed">{member.bio}</p>
+            {member.socials?.linkedin && (
+              <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-[#0077b5] text-white rounded-lg font-medium hover:bg-[#0060a0] transition-colors duration-300">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.752s.784-1.752 1.75-1.752 1.75.79 1.75 1.752-.783 1.752-1.75 1.752zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                LinkedIn Profile
+              </a>
+            )}
           </div>
         </Card>
       ))}
