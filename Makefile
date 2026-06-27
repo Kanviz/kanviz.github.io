@@ -1,7 +1,7 @@
 # Kanviz Site - Makefile
 # Convenience commands for development and deployment
 
-.PHONY: help dev build preview clean install deploy
+.PHONY: help dev build preview clean install deploy test coverage lint lint-fix
 
 # Default target
 help:
@@ -18,6 +18,10 @@ help:
 	@echo "  make deploy    Build and deploy to GitHub Pages"
 	@echo "  make format    Format code with Prettier"
 	@echo "  make check     Run type checking"
+	@echo "  make test      Run unit tests"
+	@echo "  make coverage  Run tests with coverage report"
+	@echo "  make lint      Run ESLint on source files"
+	@echo "  make lint-fix  Run ESLint and fix issues"
 	@echo ""
 
 # Start development server
@@ -36,6 +40,7 @@ preview:
 clean:
 	rm -rf dist
 	rm -rf node_modules/.vite
+	rm -rf coverage
 	@echo "Cleaned build artifacts"
 
 # Install dependencies
@@ -54,3 +59,19 @@ format:
 # Run type checking
 check:
 	npx tsc --noEmit
+
+# Run unit tests
+test:
+	npx vitest run
+
+# Run tests with coverage
+coverage:
+	npx vitest run --coverage
+
+# Run ESLint (excluding Astro files - use Prettier for formatting)
+lint:
+	npx eslint src --ext .ts,.js
+
+# Run ESLint and fix issues (excluding Astro files)
+lint-fix:
+	npx eslint src --ext .ts,.js --fix

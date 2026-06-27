@@ -1,6 +1,6 @@
 # Makefile Documentation
 
-The Kanviz site uses a `Makefile` to provide convenient commands for development and deployment.
+The Kanviz site uses a `Makefile` to provide convenient commands for development, testing, and deployment.
 
 ## Available Commands
 
@@ -22,6 +22,8 @@ Targets:
   make deploy    Build and deploy to GitHub Pages
   make format    Format code with Prettier
   make check     Run type checking
+  make test      Run unit tests
+  make coverage  Run tests with coverage report
 ```
 
 ### `make dev`
@@ -76,6 +78,7 @@ Remove generated files and build artifacts.
 $ make clean
 rm -rf dist
 rm -rf node_modules/.vite
+rm -rf coverage
 Cleaned build artifacts
 ```
 
@@ -117,8 +120,46 @@ $ make check
 > npx tsc --noEmit
 ```
 
+### `make test`
+Run unit tests using Vitest.
+
+```bash
+$ make test
+> npx vitest run
+
+ PASS  src/__tests__/example.test.ts
+  example test
+    ✓ should pass (2ms)
+    ✓ should demonstrate assertions
+
+Test Files  1 passed (1)
+Tests       2 passed (2)
+```
+
+### `make coverage`
+Run tests with coverage report.
+
+```bash
+$ make coverage
+> npx vitest run --coverage
+
+ PASS  src/__tests__/example.test.ts
+  example test
+    ✓ should pass (2ms)
+
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Lines
+----------|---------|----------|---------|---------|-------------------
+All files |     100 |      100 |     100 |     100 |
+----------|---------|----------|---------|---------|-------------------
+
+Test Files  1 passed (1)
+Tests       2 passed (2)
+```
+
 ## Development Workflow
 
+### Standard Workflow
 1. **Start development server**: `make dev`
 2. **Make changes** to source files in `src/`
 3. **Format code**: `make format` (optional, runs automatically on save)
@@ -127,6 +168,25 @@ $ make check
 6. **Preview build**: `make preview`
 7. **Deploy**: Push to main branch (triggers GitHub Actions)
 
+### TDD Workflow
+1. **Create test file** in `src/__tests__/` directory
+2. **Write failing tests** following the red-green-refactor cycle
+3. **Run tests**: `make test` or `make coverage`
+4. **Implement feature** to make tests pass
+5. **Refactor** with confidence from test coverage
+
 ## CI/CD Integration
 
 The project uses GitHub Actions for automated deployment to GitHub Pages. The workflow is configured in `.github/workflows/deploy.yml` and triggers on pushes to the `main` branch.
+
+### Test Coverage Requirements
+- Unit tests run on all PRs
+- Coverage reports are generated for changed files
+- Minimum coverage threshold: 80% (configurable in `vite.config.ts`)
+
+## Testing Best Practices
+
+1. **Test naming**: Use descriptive names that explain what is being tested
+2. **Test location**: Place test files alongside source files or in `src/__tests__/`
+3. **Coverage**: Aim for high coverage on business logic, less on presentational components
+4. **Mocking**: Use Vitest's `vi.mock()` for external dependencies
